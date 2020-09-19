@@ -16,8 +16,8 @@ using namespace std;
 class Character{
   public:
     char characterSymbol = '#';
-    int characterX = 50;
-    int characterY = 1;
+    int characterX = 30;
+    int characterY = 11;
     bool hasKey1 = false;
     string xPosArrayNK [59] = {
 "|#                              |                             |", 
@@ -143,7 +143,7 @@ class DebugStart{
   public:
     const string ASCIIDEBUG1 = " _____________________________________________________________";
     const string ASCIIDEBUG2 = "|                               |                             |";
-    const string ACIIDEBUG2WK ="|*                              |                             |";
+    const string ACIIDEBUG2WK ="| *                             |                             |";
 }DebugStart;
 
 
@@ -178,8 +178,10 @@ void runClearScreen(){
     if(character.hasKey1 == true){
       cout << DebugStart.ASCIIDEBUG2 << endl;
     }
-    cout << DebugStart.ASCIIDEBUG2 << endl;
-  }
+    else{
+    cout << DebugStart.ACIIDEBUG2WK << endl;
+    }
+ }
     if (character.characterY == 2){
     cout << character.xPosArray[character.characterX] << endl;
   }
@@ -329,6 +331,9 @@ void processIn(){
       }
     character.characterX++;
     isRun = true;
+  }
+  if(character.characterX == 1 && character.characterY == 1 && character.hasKey1 != true){
+    character.hasKey1 = true;
   }
 }
 
