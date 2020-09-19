@@ -16,9 +16,11 @@ using namespace std;
 class Character{
   public:
     char characterSymbol = '#';
-    int characterX = 30;
+    int characterX = 1;
     int characterY = 11;
     bool hasKey1 = false;
+    int eventNum = 1;
+    int plSteps = 0;
     string xPosArrayNK [59] = {
 "|#                              |                             |", 
 "| #                             |                             |", 
@@ -313,27 +315,48 @@ void processIn(){
   if(Input == "w"){
     character.characterY--;
     isRun = true;
+    character.plSteps++;
   }
   else if(Input == "s"){
     character.characterY++;
     isRun = true;
+    character.plSteps++;
   }
   else if(Input == "a" && character.characterX != 1){
     character.characterX--;
     isRun = true;
+    character.plSteps++;
   }
-  else if(Input == "d" && character.characterX != 57 && character.characterX != 30){
+  else if(Input == "d" && character.characterX != 57){
     if(character.characterX != 30){
       if(character.characterY == 11 && character.hasKey1 == true){
         character.characterX++;
         isRun = true;
+        character.plSteps++;
       }
-      }
+      
     character.characterX++;
     isRun = true;
-  }
+    character.plSteps++;
+  }}
   if(character.characterX == 1 && character.characterY == 1 && character.hasKey1 != true){
     character.hasKey1 = true;
+    character.plSteps++;
+  }
+  if((character.plSteps >= 10 && character.eventNum == 1) || (character.plSteps == 14 && character.eventNum == 2)){
+    character.eventNum++;
+  }
+}
+
+void eventSyst(){
+  if(character.eventNum == 1){
+    cout << endl << "You hear a faint sound, seemingly comeing from below you. Hello? Is anyone there? If there is, please find a way to me, " << endl << "someone locked me in here!";
+  }
+  if(character.eventNum == 2){
+    cout << endl << "As you take a couple steps, the voice becomes clearer, and the person seems to be shouting. HELP ME PLEASE! THERE SHOULD BE A SMALL HOLE SOMEWHEAR NEAR YOU! THIS PERSON NORMALLY FEEDS ME THROUGH IT, MAYBE WE CAN TALK THROUGH THERE!";
+  }
+  if(character.eventNum == 4){
+
   }
 }
 
@@ -346,6 +369,7 @@ int main() {
      //screen printing
       ClearScreen();
       runClearScreen();
+      eventSyst();
       //clear data for usage in next processing round
       isRun = false;
    // }
