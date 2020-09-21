@@ -2,9 +2,9 @@
 #include <string>
 #include <sstream>
 
-// Dear anyone visiting this repl, to use: change the characterX and characterY values to numbers from 1-57 for x and 1-21 for a starting pos. Then type in w, a, s, or d to move respectibly.! The hastag is the player, and the astric is the key to the door. Please write a comment under this when you are finished experimenting!
+// Dear anyone visiting this repl, to use: change the characterX and characterY values to numbers from 1-57 for x and 1-21 for a starting pos. Then type in w, a, s, or d to move respectibly. Use the z key as an action. The hastag is the player, and the astric is the key to the door. Please write a comment under this when you are finished experimenting!
 
-// DO NOT EDIT THE main FILE!!!! THIS WILL FOREVER DESTROY MY PROGECT!
+// DO NOT EDIT THE main FILES!!!! THIS WILL FOREVER DESTROY MY PROGECT!
 
 
 
@@ -15,6 +15,8 @@ using namespace std;
 
 class Character{
   public:
+    bool selScreen = true;
+    int charlevel = 1;
     char characterSymbol = '#';
     int characterX = 1;
     int characterY = 11;
@@ -81,6 +83,184 @@ class Character{
 "| *                             |                           # |", 
 "| *                             |                            #|"
 };
+    string xPosArrayWH [59] = {
+"|#                              |                             |", 
+"| #                             |                             |", 
+"|   #                           |                             |", 
+"|    #                          |                             |", 
+"|     #                         |                             |", 
+"|      #                        |                             |", 
+"|       #                       |                             |", 
+"|        #                      |                             |", 
+"|         #                     |                             |", 
+"|          #                    |                             |", 
+"|           #                   |                             |", 
+"|            #                  |                             |", 
+"|             #                 |                             |", 
+"|              #                |                             |", 
+"|               #               |                             |", 
+"|                #              |                             |", 
+"|                 #             |                             |", 
+"|                  #            |                             |", 
+"|                   #           |                             |", 
+"|                   #           |                             |", 
+"|                    #          |                             |", 
+"|                     #         |                             |", 
+"|                      #        |                             |", 
+"|                       #       |                             |", 
+"|                        #      |                             |", 
+"|                         #     |                             |", 
+"|                          #    |                             |", 
+"|                           #   |                             |",  
+"|                            #  |                             |", 
+"|                             # |                             |", 
+"|                              #|                             |", 
+"|                               #                            @|", 
+"|                               |#                           @|", 
+"|                               | #                          @|", 
+"|                               |  #                         @|", 
+"|                               |   #                        @|", 
+"|                               |    #                       @|", 
+"|                               |     #                      @|", 
+"|                               |      #                     @|", 
+"|                               |       #                    @|", 
+"|                               |        #                   @|", 
+"|                               |         #                  @|", 
+"|                               |          #                 @|", 
+"|                               |           #                @|", 
+"|                               |            #               @|", 
+"|                               |             #              @|", 
+"|                               |                 #          @|", 
+"|                               |                  #         @|",
+"|                               |                   #        @|", 
+"|                               |                    #       @|", 
+"|                               |                     #      @|", 
+"|                               |                      #     @|", 
+"|                               |                       #    @|", 
+"|                               |                        #   @|", 
+"|                               |                         #  @|", 
+"|                               |                          # @|", 
+"|                               |                           #@|", 
+"|                               |                            #|"
+};
+    string xPosArrayWHNC [59] = {
+"|#                              |                             |", 
+"| #                             |                             |", 
+"|   #                           |                             |", 
+"|    #                          |                             |", 
+"|     #                         |                             |", 
+"|      #                        |                             |", 
+"|       #                       |                             |", 
+"|        #                      |                             |", 
+"|         #                     |                             |", 
+"|          #                    |                             |", 
+"|           #                   |                             |", 
+"|            #                  |                             |", 
+"|             #                 |                             |", 
+"|              #                |                             |", 
+"|               #               |                             |", 
+"|                #              |                             |", 
+"|                 #             |                             |", 
+"|                  #            |                             |", 
+"|                   #           |                             |", 
+"|                   #           |                             |", 
+"|                    #          |                             |", 
+"|                     #         |                             |", 
+"|                      #        |                             |", 
+"|                       #       |                             |", 
+"|                        #      |                             |", 
+"|                         #     |                             |", 
+"|                          #    |                             |", 
+"|                           #   |                             |",  
+"|                            #  |                             |", 
+"|                             # |                             |", 
+"|                              #|                             |", 
+"|                                                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|",
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|", 
+"|                               |                            @|"
+};
+string xPosArrayEx[59] = {"|#                                                            |", 
+"| #                             |                              ", 
+"|   #                           |                              ", 
+"|    #                          |                              ", 
+"|     #                         |                              ", 
+"|      #                        |                              ", 
+"|       #                       |                              ", 
+"|        #                      |                              ", 
+"|         #                     |                              ", 
+"|          #                    |                              ", 
+"|           #                   |                              ", 
+"|            #                  |                              ", 
+"|             #                 |                              ", 
+"|              #                |                              ", 
+"|               #               |                              ", 
+"|                #              |                              ", 
+"|                 #             |                              ", 
+"|                  #            |                              ", 
+"|                   #           |                              ", 
+"|                   #           |                              ", 
+"|                    #          |                              ", 
+"|                     #         |                              ", 
+"|                      #        |                              ", 
+"|                       #       |                              ", 
+"|                        #      |                              ", 
+"|                         #     |                              ", 
+"|                          #    |                              ", 
+"|                           #   |                              ",  
+"|                            #  |                              ", 
+"|                             # |                              ", 
+"|                              #|                              ", 
+"|                               #                              ", 
+"|                               |#                             ", 
+"|                               | #                            ", 
+"|                               |  #                           ", 
+"|                               |   #                          ", 
+"|                               |    #                         ", 
+"|                               |     #                        ", 
+"|                               |      #                       ", 
+"|                               |       #                      ", 
+"|                               |        #                     ", 
+"|                               |         #                    ", 
+"|                               |          #                   ", 
+"|                               |           #                  ", 
+"|                               |            #                 ", 
+"|                               |             #                ", 
+"|                               |                 #            ", 
+"|                               |                  #           ",
+"|                               |                   #          ", 
+"|                               |                    #         ", 
+"|                               |                     #        ", 
+"|                               |                      #       ", 
+"|                               |                       #      ", 
+"|                               |                        #     ", 
+"|                               |                         #    ", 
+"|                               |                          #   ", 
+"|                               |                           #  ", 
+"|                               |                            # "};
 string xPosArray[59] = {"|#                              |                             |", 
 "| #                             |                             |", 
 "|   #                           |                             |", 
@@ -146,6 +326,7 @@ class DebugStart{
     const string ASCIIDEBUG1 = " _____________________________________________________________";
     const string ASCIIDEBUG2 = "|                               |                             |";
     const string ACIIDEBUG2WK ="| *                             |                             |";
+    const string ASCIIDEBUG2EX="|                               |                              ";
 }DebugStart;
 
 
@@ -164,7 +345,7 @@ void ClearScreen()
     cout << string( 100, '\n' );
     }
 
-void runClearScreen(){
+void runClearScreen1(){
   cout << DebugStart.ASCIIDEBUG1 << endl ;
   if (character.characterY == 1 || character.characterY == 0){
     if(character.characterY == 0){
@@ -233,10 +414,10 @@ void runClearScreen(){
     cout << DebugStart.ASCIIDEBUG2 << endl;
   }
     if (character.characterY == 10){
-    cout << character.xPosArray[character.characterX] << endl;
+    cout << character.xPosArrayEx[character.characterX] << endl;
   }
   else{
-    cout << DebugStart.ASCIIDEBUG2 << endl;
+    cout << DebugStart.ASCIIDEBUG2EX << endl;
   }
     if (character.characterY == 11){
     cout << character.xPosArray[character.characterX] << endl;
@@ -287,11 +468,19 @@ void runClearScreen(){
     cout << DebugStart.ASCIIDEBUG2 << endl;
   }
     if (character.characterY == 19){
+    if(character.characterX >= 32){
+      cout << character.xPosArrayWH[character.characterX] << endl;
+    }
+    else{
     cout << character.xPosArray[character.characterX] << endl;
-  }
+  }}
   else{
+     if(character.characterX >= 32){
+          cout << character.xPosArrayWHNC[character.characterX] << endl;
+      }
+      else{
     cout << DebugStart.ASCIIDEBUG2 << endl;
-  }
+  }}
     if (character.characterY == 20){
     cout << character.xPosArray[character.characterX] << endl;
   }
@@ -327,18 +516,30 @@ void processIn(){
     isRun = true;
     character.plSteps++;
   }
-  else if(Input == "d" && character.characterX != 57){
+  else if(Input == "d" && character.characterX != 58){
+    if(character.characterX == 58){
+      if(character.characterY == 10){
+        character.charlevel++;
+      }
+      character.characterX = 57;
+    }
+    
     if(character.characterX != 30){
       if(character.characterY == 11 && character.hasKey1 == true){
         character.characterX++;
         isRun = true;
         character.plSteps++;
-      }
-      
+      }  
     character.characterX++;
     isRun = true;
     character.plSteps++;
   }}
+  else if(Input == "z"){
+    // Use actions here
+    if(character.characterX == 57 && character.characterY == 19 && character.eventNum == 3){
+      character.eventNum++;
+    }
+  }
   if(character.characterX == 1 && character.characterY == 1 && character.hasKey1 != true){
     character.hasKey1 = true;
     character.plSteps++;
@@ -356,7 +557,7 @@ void eventSyst(){
     cout << endl << "As you take a couple steps, the voice becomes clearer, and the person seems to be shouting. HELP ME PLEASE! THERE SHOULD BE A SMALL HOLE SOMEWHEAR NEAR YOU! THIS PERSON NORMALLY FEEDS ME THROUGH IT, MAYBE WE CAN TALK THROUGH THERE!";
   }
   if(character.eventNum == 4){
-
+    cout << endl << "Hello? You shout down the small hole. Hi! She said back, please, find a way to save me! Then you realise that this is the long lost princess. You think to yourself, are you up for the chall" << endl << "enge? Will you go through the dungeon to save the princess and gain infinite glory and riches? Don't wory, I am " << endl << "coming, you shout down.";
   }
 }
 
@@ -368,7 +569,7 @@ int main() {
     //if(isRun == true){
      //screen printing
       ClearScreen();
-      runClearScreen();
+      runClearScreen1();
       eventSyst();
       //clear data for usage in next processing round
       isRun = false;
